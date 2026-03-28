@@ -108,13 +108,6 @@ Bootstrap 5
 JavaScript (ES6+)
 OpenWeather API
 
-## 👤 Sistema de Usuarios
-
-La aplicación implementa un sistema básico de autenticación que permite:
-
-- Registro e inicio de sesión de usuarios.
-- Almacenamiento del estado global mediante Vuex.
-- Personalización de la experiencia según el usuario autenticado.
 
 ## ▶️ Cómo ejecutar el proyecto
 Si deseas explorar el código o realizar mejoras en tu entorno local, sigue estos pasos:
