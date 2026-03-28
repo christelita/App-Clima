@@ -37,11 +37,11 @@
         >
           <div style="height: 195px; overflow: hidden; background: #e6fffa;">
             <img 
-              :src="`/assets/cities/${normalizeName(city.name)}.png`" 
-              class="card-img-top"
-              :alt="city.name"
-              style="width: 100%; height: 100%; object-fit: cover;"
-            />
+            :src="`./assets/cities/${city.name.replace(/\s+/g, '')}.png`" 
+            class="card-img-top"
+            :alt="city.name"
+            style="width: 100%; height: 100%; object-fit: cover;"
+/>
           </div>
 
           <button 

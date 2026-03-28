@@ -107,12 +107,12 @@ export default {
     })
 
     const calculateWeeklyStats = (weekly) => {
-      const temps = weekly.map(d => (d.max + d.min)/2)
-      const avgTemp = temps.reduce((a,b)=>a+b,0)/temps.length
+      const temps = weekly.map(d => (d.max + d.min) / 2)
+      const avgTemp = temps.reduce((a, b) => a + b, 0) / temps.length
 
       let summary = ""
-      if(avgTemp < 15) summary = "Semana fría ❄️"
-      else if(avgTemp < 25) summary = "Semana templada 🌤️"
+      if (avgTemp < 15) summary = "Semana fría ❄️"
+      else if (avgTemp < 25) summary = "Semana templada 🌤️"
       else summary = "Semana calurosa 🔥"
 
       return {
@@ -126,12 +126,12 @@ export default {
     const formatTemp = (temp) => {
       return unit.value === "C"
         ? `${temp}°C`
-        : `${Math.round(temp * 9/5 + 32)}°F`
+        : `${Math.round(temp * 9 / 5 + 32)}°F`
     }
 
     const formatTempDay = (day) => {
-      const min = unit.value === "C" ? day.min : Math.round(day.min * 9/5 + 32)
-      const max = unit.value === "C" ? day.max : Math.round(day.max * 9/5 + 32)
+      const min = unit.value === "C" ? day.min : Math.round(day.min * 9 / 5 + 32)
+      const max = unit.value === "C" ? day.max : Math.round(day.max * 9 / 5 + 32)
       return `${max}° / ${min}°`
     }
 
@@ -141,17 +141,18 @@ export default {
 
     onMounted(() => {
       console.log("ID recibido:", route.params.id)
-
       const idParam = route.params.id
 
-      // 🔥 FIX CLAVE
-      const id = isNaN(Number(idParam)) ? idParam : Number(idParam)
-
-      city.value = CITIES.find(c => c.id === id)
+      // Lógica de búsqueda corregida
+      if (!isNaN(idParam) && idParam !== "") {
+        city.value = CITIES[Number(idParam)]
+      } else {
+        city.value = CITIES.find(c => c.id === idParam)
+      }
 
       console.log("Ciudad encontrada:", city.value)
 
-      if(city.value){
+      if (city.value) {
         stats.value = calculateWeeklyStats(city.value.weekly)
       }
     })
@@ -165,6 +166,6 @@ export default {
       goBack,
       isAuth
     }
-  }
-}
+  } // <--- Cierre del setup
+} // <--- Cierre del export default
 </script>
