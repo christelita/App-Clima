@@ -1,28 +1,112 @@
-# 🌤️ App del Clima - Vue 3 (Usuarios, Login y Estado Global) Módulo 7
+# 🌤️ App del Clima - Vue 3 (Usuarios, Login,  Estado Global, Cosumo de API de clima) Módulo 8
 
-Aplicación web desarrollada con Vue 3 que permite visualizar información climática de distintas ciudades, gestionar favoritos y explorar detalles semanales.
-La App de Clima contiene un sistema básico de usuarios (registro/login) utilizando Vue, Vue Router,
-Axios (o datos mock) y Vuex  manejan el estado global de autenticación y las preferencias de cada
-usuario.
-En esta iteración el foco está en autenticación y personalización: que la aplicación “reconozca” a la
-persona que inicia sesión y muestre parte de la información ajustada a ese usuario (por ejemplo, sus
-lugares favoritos o sus preferencias de temperatura).
-• Se implementan pantallas de registro e inicio de sesión en una SPA hecha con Vue.
-• Se utiliza Vuex para almacenar el estado de autenticación y los datos básicos del usuario.
-• Se protegen secciones de la aplicación mediante rutas que requieren estar logueado.
-• Se ajustan partes de la interfaz según el usuario autenticado (preferencias de temperatura, lugares favoritos, etc.).
+Aplicación web SPA desarrollada en Vue 3 que permite consultar el clima de distintas ciudades, visualizar pronóstico semanal y gestionar preferencias del usuario.
 
-Sobre la base de la SPA en Vue de Módulo 6:
-• Se añade login con formulario de inicio de sesión.
-• Se define un flujo de autenticación sencillo:
- 1) Usuario ingresa credenciales.
- 2) Si el login es correcto, se guarda la información del usuario en Vuex y la app
-redirige a Home (o a la última ruta visitada). 
- 3) Si el login falla, se muestra un mensaje de error.
- 4) Algunas secciones deben ser “solo para usuarios autenticados”: 
-o Acceder a detalle de ciudad para ver su información (redirige de inmediato a Login).
-o Ver o editar “lugares favoritos”(se solicita acceder a Login).
-o Seleccionar unidad de temperatura °C/°F (se muestra restricción). 
+Consume datos en tiempo real desde una API externa e implementa manejo de estado global con Vuex, incluyendo estadísticas y alertas meteorológicas.
+
+
+## 🚀 Demo en Vivo
+
+Puedes probar la aplicación funcionando aquí:  
+
+👉 [https://christelita.github.io/App-Clima/](https://christelita.github.io/App-Clima/)
+
+## 📦 Repositorio
+
+👉 https://github.com/christelita/App-Clima.git
+
+## ✨ Funcionalidades principales
+
+🔍 Búsqueda de ciudades
+🌡️ Visualización de clima actual y pronóstico semanal
+📊 Cálculo de estadísticas meteorológicas
+⚠️ Generación de alertas climáticas
+⭐ Sistema de favoritos
+🔐 Autenticación simulada
+🎨 Interfaz moderna y responsiva
+
+## 🧭 Estructura de la aplicación (SPA)
+
+Home → Listado de ciudades con clima actual
+Detalle de ciudad → Pronóstico extendido + estadísticas
+Favoritos → Gestión personalizada (requiere login)
+
+## 🌐 Consumo de API
+
+La aplicación obtiene datos reales desde OpenWeather API mediante Axios:
+
+Temperatura actual
+Estado del clima
+Humedad
+Velocidad del viento
+Coordenadas geográficas
+
+🔐 La API key se gestiona mediante variables de entorno (.env), evitando exponer credenciales sensibles en el código.
+
+## ⚙️ Manejo de estados
+
+⏳ Estado de carga ("cargando...")
+❌ Manejo de errores en la API
+🔄 Actualización dinámica de datos
+
+## 🗃️ Manejo de estado global (Vuex)
+
+La aplicación utiliza Vuex para centralizar:
+
+Lista de ciudades
+Ciudad seleccionada
+Pronóstico del clima
+Preferencias del usuario (°C / °F)
+Estados de carga y error
+
+
+## 📊 Estadísticas y Alertas
+
+A partir de los datos obtenidos desde la API, la app genera:
+
+## 📈 Estadísticas semanales
+
+Temperatura mínima
+Temperatura máxima
+Temperatura promedio
+Conteo de condiciones climáticas
+
+## ⚠️ Alertas meteorológicas
+
+🌡️ Ola de calor (temperaturas altas consecutivas)
+🌧️ Semana lluviosa (frecuencia de precipitaciones)
+
+📌 Nota: Las estadísticas meteorológicas y la gestión de favoritos están disponibles para usuarios autenticados. Esto permite que cada persona vea información personalizada según sus preferencias y ciudades favoritas.
+
+## 🔐 Sistema de Usuarios 
+
+La aplicación incluye autenticación simulada:
+
+Inicio de sesión
+Persistencia en Vuex
+Personalización de experiencia
+
+## 👤 Datos por usuario:
+Nombre
+Preferencia de unidad de temperatura (°C / °F)
+Ciudades favoritas
+
+## 🛣️ Rutas protegidas
+/login → Inicio de sesión
+/favoritos → Solo usuarios autenticados
+
+📌 Redirección automática a login si no está autenticado.
+
+## 🛠️ Tecnologías utilizadas
+ 
+Vue 3
+Vite
+Vue Router
+Vuex
+Axios
+Bootstrap 5
+JavaScript (ES6+)
+OpenWeather API
 
 ## 👤 Sistema de Usuarios
 
@@ -32,67 +116,47 @@ La aplicación implementa un sistema básico de autenticación que permite:
 - Almacenamiento del estado global mediante Vuex.
 - Personalización de la experiencia según el usuario autenticado.
 
-### 🔐 Información almacenada por usuario:
+## ▶️ Cómo ejecutar el proyecto
+Si deseas explorar el código o realizar mejoras en tu entorno local, sigue estos pasos:
 
-Cada usuario guarda:
-
-- Nombre de usuario
-- Credenciales de acceso (simuladas)
-- Preferencia de unidad de temperatura (°C / °F)
-- Lista de ciudades favoritas
-
-Estos datos permiten que la aplicación adapte la interfaz y funcionalidades según el usuario activo.
-
-## 🛣️ Rutas de Autenticación
-
-La aplicación cuenta con rutas protegidas y públicas:
-
-- `/login` → Pantalla de inicio de sesión.
-- `/registro` → No implementado (autenticación simulada con datos mock en el frontend)
-- `/favoritos` → Gestión de ciudades favoritas (solo usuarios autenticados).
-
-> 📌Nota: Las rutas protegidas redirigen al usuario a `/login` si no ha iniciado sesión.
-
-> ⚙️Nota técnica: La autenticación se implementa mediante datos simulados (mock), por lo que no se utilizó Axios en esta versión. 
+1. Clonar el repositorio: git clone https://github.com/christelita/App-Clima.git  
+2. Entrar al proyecto: cd clima-app  
+3. Instalar dependencias: npm install  
+4. Crear archivo .env y agregar su VITE_WEATHER_API_KEY.
+5. Ejecutar: npm run dev 
+6. Abrir: http://localhost:5173  
 
 
----
-### 🗂️ Estructura del Proyecto
+## 🗂️ Estructura del Proyecto
 
-```plaintext
-CLIMA-APP/
-├── public/
-│   ├── Assets/
-│   │   └── cities/       # Imágenes de ciudades
-│   └── favicon.ico
-├── screenshots/          # Capturas de la app
-├── src/
-│   ├── assets/           # CSS, imágenes internas, iconos
-│   │   ├── css/
-│   │   │   ├── styles.css
-│   │   │   └── main.css
-│   ├── components/       # Actualmente vacío
-│   ├── data/             # cities.js
-│   ├── router/           # Vue Router, rutas de la app
-│   │   └── index.js
-│   ├── stores/           # Vuex
-│   │   └── index.js
-│   ├── views/            
-│   │   ├── About.vue
-│   │   ├── Detail.vue
-│   │   ├── Login.vue
-│   │   └── App.vue
-│   └── main.js
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-└── vite.config.js
+A continuación se detalla la organización de carpetas y archivos principales del proyecto:
+
+```text
+App-Clima/
+├── .github/workflows/    # Configuración de GitHub Actions (Despliegue)
+├── dist/                 # Archivos compilados para producción (Generado)
+│   ├── assets/           # CSS y JS minificados
+│   └── index.html        # Punto de entrada en servidor
+├── node_modules/         # Dependencias del proyecto
+├── public/               # Recursos estáticos públicos
+│   └── assets/cities/    # Imágenes decorativas de ciudades
+├── screenshots/          # Capturas de pantalla para documentación
+├── src/                  # Código fuente de la aplicación
+│   ├── assets/           # Recursos procesados (CSS Global)
+│   ├── components/       # Componentes reutilizables de Vue
+│   ├── data/             # Datos estáticos y archivos de configuración (cities.js)
+│   ├── router/           # Configuración de rutas (Vue Router)
+│   ├── services/         # Servicios para llamadas a API (Axios/WeatherService)
+│   ├── stores/           # Manejo de estado global (Vuex)
+│   ├── views/            # Vistas principales (Home, Login, Detail, About)
+│   ├── App.vue           # Componente raíz
+│   └── main.js           # Archivo de entrada de JavaScript
+├── .env                  # Variables de entorno (Ignorado por Git)
+├── .gitignore            # Archivos excluidos del repositorio
+├── index.html            # Plantilla HTML principal
+├── package.json          # Scripts y dependencias del proyecto
+└── vite.config.js        # Configuración de Vite
 ```
-
-## 🚀 Demo 
-
-https://github.com/christelita/App-Clima.git 
 
 ---
 
@@ -132,72 +196,12 @@ A continuación se muestran las diferentes pantallas de la aplicación:
 
 
 ---
-
-## ✨ Funcionalidades
-
-- 🔍 Búsqueda de ciudades
-- ⭐ Sistema de favoritos
-- 🌡️ Cambio de temperatura (°C / °F)
-- 🔐 Autenticación simulada
-- 📊 Pronóstico semanal
-- 🎨 Interfaz moderna con sutil animación
-
-
-## 🔄 Integración de datos reales
-
-Este proyecto consume datos en tiempo real desde una API de clima (OpenWeather), reemplazando datos estáticos o simulados.
-
-La aplicación obtiene información dinámica como:
-
-- Temperatura actual
-- Estado del clima (cielo claro, nublado, lluvia, etc.)
-- Humedad
-- Velocidad del viento
-- Coordenadas geográficas
-
-Estos datos se actualizan automáticamente al cargar la aplicación, permitiendo mostrar información real y actualizada de distintas ciudades del mundo.
-
-## ⚙️ Manejo de datos
-
-La información es procesada y adaptada para su visualización en la interfaz, incluyendo:
-
-- Conversión de unidades (°C / °F)
-- Normalización de descripciones del clima para iconos dinámicos
-- Formateo de coordenadas y valores numéricos
-
----
-
-
-
-## 🛠️ Tecnologías utilizadas
-
-- Vue 3
-- Vite
-- Vue Router
-- Vuex
-- Axios (consumo de API REST)
-- JavaScript (ES6+)
-- Bootstrap 5
-- OpenWeather API
-
----
-
-## ▶️ Cómo ejecutar el proyecto
-
-
-1. Clonar el repositorio: git clone https://github.com/christelita/App-Clima.git  
-2. Entrar al proyecto: cd clima-app  
-3. Instalar dependencias: npm install  
-4. Ejecutar: npm run dev  
-5. Abrir: http://localhost:5173  
-
-
-
+ 
 ## 🧠 Aprendizajes
 
 Durante este proyecto se reforzó:
 
-- Manejo de estado global con Pinia
+- Manejo de estado global con Vuex
 - Navegación con Vue Router
 - Componentización en Vue
 - Mejora de experiencia de usuario (UX/UI)
