@@ -37,7 +37,7 @@
         >
           <div style="height: 195px; overflow: hidden; background: #e6fffa;">
             <img 
-              :src="`/Assets/cities/${normalizeName(city.name)}.png`" 
+              :src="`/assets/cities/${normalizeName(city.name)}.png`" 
               class="card-img-top"
               :alt="city.name"
               style="width: 100%; height: 100%; object-fit: cover;"
