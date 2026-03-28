@@ -1,0 +1,14 @@
+.info-box {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+.info-box div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
