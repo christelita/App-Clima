@@ -41,7 +41,7 @@
     </transition>
    
     <footer class="weather-app__footer">
-      <small>Weather Frontend - Módulo 7 • Entrega educativa💻 • Hecho con 💙</small>
+      <small>Weather Frontend - Módulo 8 • Entrega educativa💻 • Hecho con 💙</small>
     </footer>
 
     <div class="weather-indicator" aria-hidden="true">🌡️2️⃣0️⃣2️⃣6️⃣🌡️</div>
